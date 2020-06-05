@@ -26,17 +26,30 @@ class DismissableViewController: UIViewController {
 
         view.backgroundColor = .white
 
-        let button = UIButton()
-        button.setTitle("Dismiss", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(dismissFromDirectPresenter), for: .touchUpInside)
-        view.addSubview(button)
+        let button1 = UIButton()
+        button1.setTitle("Dismiss from presenter", for: .normal)
+        button1.setTitleColor(.systemBlue, for: .normal)
+        button1.addTarget(self, action: #selector(dismissFromDirectPresenter), for: .touchUpInside)
+        view.addSubview(button1)
 
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button1.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            button1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button1.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -32)
+        ])
+
+        let button2 = UIButton()
+        button2.setTitle("Dismiss myself directly", for: .normal)
+        button2.setTitleColor(.systemBlue, for: .normal)
+        button2.addTarget(self, action: #selector(dismissMyself), for: .touchUpInside)
+        view.addSubview(button2)
+
+        button2.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            button2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button2.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 32)
         ])
     }
 
@@ -52,5 +65,9 @@ class DismissableViewController: UIViewController {
 
     @objc private func dismissFromDirectPresenter() {
         directPresenter.dismiss(animated: true)
+    }
+
+    @objc private func dismissMyself() {
+        dismiss(animated: true)
     }
 }

@@ -28,6 +28,10 @@ class SearchController: UISearchController {
         ])
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        NSLog("viewWillAppear of \(type(of: self)) is called")
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
